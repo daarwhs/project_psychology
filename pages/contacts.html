@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты поддержки | MindCare</title>
+    <meta name="description" content="Телефоны доверия, психологические службы вузов, онлайн-консультации">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/логотип.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="../assets/images/логотип.jpg">
+    <link rel="apple-touch-icon" href="../assets/images/логотип.jpg">
+    
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/bem-components.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contacts.css">
+    <link rel="stylesheet" href="../css/buttons.css">
+    <link rel="stylesheet" href="../css/images.css">
+    <link rel="stylesheet" href="../css/notification.css">
+    <link rel="stylesheet" href="../css/readability.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    
+</head>
+<body class="page">
+    <!-- БЛОК: header -->
+    <header class="header">
+        <div class="header__container container">
+            <a href="../index.html" class="header__logo">
+                <img src="../assets/images/логотип.jpg" alt="MindCare" class="header__logo-icon" loading="eager" onerror="this.style.display='none';">
+                <span class="header__logo-text">MindCare</span>
+            </a>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item"><a href="../index.html" class="header__nav-link">Главная</a></li>
+                    <li class="header__nav-item"><a href="articles.html" class="header__nav-link">Статьи</a></li>
+                    <li class="header__nav-item"><a href="tests.html" class="header__nav-link">Тесты</a></li>
+                    <li class="header__nav-item"><a href="mood-tracker.html" class="header__nav-link">Дневник</a></li>
+                    <li class="header__nav-item"><a href="exercises.html" class="header__nav-link">Упражнения</a></li>
+                    <li class="header__nav-item"><a href="contacts.html" class="header__nav-link header__nav-link--active">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header__actions">
+            </div>
+            <button class="header__menu-toggle" id="menuToggle" aria-label="Открыть меню">
+                <span class="header__menu-icon"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- БЛОК: main -->
+    <main class="main main--contacts">
+        <div class="container">
+            <div class="section-title">
+                <div class="section-title__icon">
+                    <img src="../assets/images/контакты лого.jpg" alt="Контакты поддержки" class="section-title__icon-img" loading="eager" onerror="this.style.display='none'; this.parentElement.innerHTML='📞';">
+                </div>
+                <h1 class="section-title__heading">Контакты поддержки</h1>
+                <p class="section-title__text">Горячие линии, психологические службы вузов и проверенные онлайн-консультации</p>
+            </div>
+
+            <!-- Поиск и фильтры -->
+            <div class="contacts-controls">
+                <div class="contacts-controls__search-wrapper">
+                    <input type="text" id="searchInput" class="contacts-controls__search-input" placeholder="Поиск по названию, городу или специализации…">
+                </div>
+
+                <div class="contacts-controls__filters">
+                    <button class="contacts-controls__filter-button contacts-controls__filter-button--active" data-filter="all">Все</button>
+                    <button class="contacts-controls__filter-button" data-filter="crisis">Кризисные линии</button>
+                    <button class="contacts-controls__filter-button" data-filter="university">Вузы</button>
+                    <button class="contacts-controls__filter-button" data-filter="online">Онлайн</button>
+                    <button class="contacts-controls__filter-button" data-filter="pridnestrovie">Приднестровье</button>
+                </div>
+            </div>
+
+            <!-- Сетка контактов -->
+            <div class="contacts-grid" id="contactsGrid">
+                <!-- JS заполнит сюда карточки -->
+            </div>
+
+            <!-- Если ничего не найдено -->
+            <div id="noResults" class="contacts-grid__empty" style="display:none;">
+                <p>По вашему запросу ничего не найдено</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- БЛОК: footer -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__main">
+                <p class="footer__text">
+                    2025 год. Кострицкая Дарья 301ЭФ. Этот ресурс предоставляет информацию и инструменты самопомощи, 
+                    но <strong>НЕ заменяет</strong> профессиональную медицинскую или психологическую помощь.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно для экстренной помощи -->
+    <div class="modal modal--emergency" id="emergencyModal" role="dialog" aria-labelledby="emergencyModalTitle" aria-modal="true" hidden>
+        <div class="modal__overlay" data-modal-close></div>
+        <div class="modal__container">
+            <div class="modal__header">
+                <h2 class="modal__title" id="emergencyModalTitle">🚨 Экстренная помощь</h2>
+                <button class="modal__close" data-modal-close aria-label="Закрыть">×</button>
+            </div>
+            <div class="modal__body">
+                <div class="emergency-contacts">
+                    <div class="emergency-contact">
+                        <h3 class="emergency-contact__title">Телефон доверия</h3>
+                        <a href="tel:88002000122" class="emergency-contact__phone">📞 8-800-2000-122</a>
+                        <p class="emergency-contact__description">Бесплатная психологическая помощь (круглосуточно)</p>
+                    </div>
+                    <div class="emergency-contact">
+                        <h3 class="emergency-contact__title">Телефон доверия для студентов</h3>
+                        <a href="tel:88002004747" class="emergency-contact__phone">📞 8-800-200-47-47</a>
+                        <p class="emergency-contact__description">Бесплатная психологическая помощь студентам</p>
+                    </div>
+                    <div class="emergency-contact">
+                        <h3 class="emergency-contact__title">Телефон доверия Приднестровья</h3>
+                        <a href="tel:080022222" class="emergency-contact__phone">📞 0-800-2-22-22</a>
+                        <p class="emergency-contact__description">Круглосуточная психологическая помощь в ПМР</p>
+                    </div>
+                    <div class="emergency-contact">
+                        <h3 class="emergency-contact__title">Экстренные службы ПМР</h3>
+                        <a href="tel:112" class="emergency-contact__phone">📞 112</a>
+                        <p class="emergency-contact__description">Единый номер экстренных служб</p>
+                    </div>
+                </div>
+                <div class="emergency-actions">
+                    <button class="emergency-action" data-quick-exit>🚪 Быстрый выход с сайта</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="../js/site-controls.js"></script>
+    <script src="../js/main.js" type="module"></script>
+    <!-- Данные для работы без сервера -->
+    <script src="../js/data/contacts-data.js"></script>
+    <script src="../js/contacts.js"></script>
+    
+    <script>
+        // Инициализация модальных окон
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-modal-close]').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    const modal = this.closest('.modal');
+                    if (modal && (e.target === this || this.classList.contains('modal__close'))) {
+                        modal.hidden = true;
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal:not([hidden])').forEach(modal => {
+                        modal.hidden = true;
+                        document.body.style.overflow = '';
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Фиксированные кнопки: fallback-разметка на случай, если JS не создаст их сам -->
+    <div class="site-controls site-controls--inline">
+        <button class="site-controls__btn site-controls__btn--scroll-top" aria-label="Наверх" title="Наверх">
+            <span class="site-controls__btn-icon">↑</span>
+        </button>
+        <button class="site-controls__btn site-controls__btn--emergency" aria-label="Экстренная помощь" title="Экстренная помощь" data-emergency-help>
+            <span class="site-controls__btn-icon">🚨</span>
+        </button>
+        <button class="site-controls__btn site-controls__btn--exit" aria-label="Быстрый выход" title="Быстрый выход (Shift + Escape)" data-quick-exit>
+            <span class="site-controls__btn-icon">🚪</span>
+        </button>
+    </div>
+</body>
+</html>
